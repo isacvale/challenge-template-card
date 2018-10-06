@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <div class='hook'></div>
+
+    <template>
+      <div class='card-container'>
+        <div class='card-title'></div>
+        <div class='card-image'></div>
+        <div class='card-up up-one'></div>
+        <div class='card-up up-two'></div>
+        <div class='card-down down-one'></div>
+        <div class='card-down down-two'></div>
+        <div class='card-down down-three'></div>
+        <div class='card-down down-four'></div>
+      </div>
+  </template>
+
+  <script>
+    window.onload = function (){
+
+      console.log('ahoy')
+      let template = document.querySelector('template').innerHTML
+      let hook = document.querySelector('.hook')
+      hook.innerHTML = template
+
+    }
+  </script>
+
+  </body>
+
+  <style>
+  *{
+    padding:0;
+    margin:0;
+  }
+  .card-title{
+    grid-area: title;
+    background-color: aliceblue;
+  }
+  .card-image{
+    grid-area: image;
+    background-color: blanchedalmond;
+  }
+  .up-one{
+    grid-area: upleft;
+    background-color: darksalmon;
+  }
+  .up-two{
+    grid-area: upright;
+    background-color: darkturquoise;
+  }
+  .down-one{
+    grid-area: downleft;
+    background-color: gainsboro;
+  }
+  .down-two{
+    grid-area: downmiddle;
+    background-color: khaki;
+  }
+  .down-three{
+    grid-area: downright;
+    background-color: lavender;
+  }
+  .down-four{
+    grid-area: downdown;
+    background-color: lightsalmon;
+  }
+  .card-up, .card-down{
+    display: inline-block;
+  }
+  .card-container{
+    width: 50vw;
+    min-width: 600px;
+    height: 50vh;
+    min-height: 300px;
+    background: yellow;
+    margin: 25vh auto;
+
+    display: grid;
+    grid-template-columns: 5fr repeat(4, 1fr);
+    grid-template-rows: 1fr 2fr repeat(2, 1fr);
+    grid-template-areas:
+      "title title title title title "
+      "image upleft upleft upright upright"
+      "image downleft downmiddle downmiddle downright"
+      "image downleft downdown downdown downright";
+    /* grid-gap: 3px; */
+    place-items: stretch;
+    place-content: stretch;
+
+  }
+
+
+
+  </style>
+
+
+</html>
