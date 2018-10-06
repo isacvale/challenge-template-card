@@ -6,7 +6,8 @@
   </head>
   <body>
 
-    <div class='hook'></div>
+    <custom-card></custom-card>
+    <custom-card></custom-card>
 
     <template>
       <div class='card-container'>
@@ -22,14 +23,15 @@
   </template>
 
   <script>
-    window.onload = function (){
 
-      console.log('ahoy')
-      let template = document.querySelector('template').innerHTML
-      let hook = document.querySelector('.hook')
-      hook.innerHTML = template
-
+  class Card extends HTMLElement{
+    constructor(){
+      super();
+      this.innerHTML =  document.querySelector('template').innerHTML
     }
+  }
+  customElements.define('custom-card', Card);
+
   </script>
 
   </body>
