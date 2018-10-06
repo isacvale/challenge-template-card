@@ -6,32 +6,35 @@
   </head>
   <body>
 
-    <custom-card></custom-card>
-    <custom-card></custom-card>
+    <card-template></card-template>
+
+    <!-- <div class='hook'></div> -->
 
     <template>
-      <div class='card-container'>
-        <div class='card-title'></div>
-        <div class='card-image'></div>
-        <div class='card-up up-one'></div>
-        <div class='card-up up-two'></div>
-        <div class='card-down down-one'></div>
-        <div class='card-down down-two'></div>
-        <div class='card-down down-three'></div>
-        <div class='card-down down-four'></div>
-      </div>
-  </template>
+      <div class='card-title'></div>
+      <div class='card-image'></div>
+      <div class='card-up up-one'></div>
+      <div class='card-up up-two'></div>
+      <div class='card-down down-one'></div>
+      <div class='card-down down-two'></div>
+      <div class='card-down down-three'></div>
+      <div class='card-down down-four'></div>
+    </template>
+
 
   <script>
-
-  class Card extends HTMLElement{
-    constructor(){
-      super();
-      this.innerHTML =  document.querySelector('template').innerHTML
+    window.onload = function (){
+      customElements.define('card-template', CardTemplate)
     }
-  }
-  customElements.define('custom-card', Card);
 
+    class CardTemplate extends HTMLElement{
+      constructor(){
+        super()
+        // var shadow = this.attachShadow({mode: 'open'})
+        this.innerHTML = document.querySelector('template').innerHTML
+      }
+
+    }
   </script>
 
   </body>
@@ -76,12 +79,12 @@
   .card-up, .card-down{
     display: inline-block;
   }
-  .card-container{
+  card-template{
     width: 50vw;
     min-width: 600px;
     height: 50vh;
     min-height: 300px;
-    background: yellow;
+    background: palevioletred;
     margin: 25vh auto;
 
     display: grid;
@@ -95,10 +98,25 @@
     /* grid-gap: 3px; */
     place-items: stretch;
     place-content: stretch;
+    gap: 3px;
+    padding: 3px;
 
   }
 
-
+  @media only screen and (max-width: 600px){
+    card-template{
+      width: 100vw;
+      min-width: 300px;;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr 4fr 2fr repeat(2, 1fr);
+      grid-template-areas:
+        "title title title title"
+        "image image image image"
+        "upleft upleft upright upright"
+        "downleft downmiddle downmiddle downright"
+        "downleft downdown downdown downright";
+    }
+  }
 
   </style>
 
