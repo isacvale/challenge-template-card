@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+<<<<<<< HEAD:index.html
+    <custom-card></custom-card>
+    <custom-card></custom-card>
+=======
+    <card-template></card-template>
+
+    <!-- <div class='hook'></div> -->
+>>>>>>> 0ba1e247077319884eeff7df915a942c4ab819a7:card-template.html
+
+    <template>
+      <div class='card-title'></div>
+      <div class='card-image'></div>
+      <div class='card-up up-one'></div>
+      <div class='card-up up-two'></div>
+      <div class='card-down down-one'></div>
+      <div class='card-down down-two'></div>
+      <div class='card-down down-three'></div>
+      <div class='card-down down-four'></div>
+    </template>
+
+
+  <script>
+<<<<<<< HEAD:index.html
+=======
+    window.onload = function (){
+      customElements.define('card-template', CardTemplate)
+    }
+
+    class CardTemplate extends HTMLElement{
+      constructor(){
+        super()
+        // var shadow = this.attachShadow({mode: 'open'})
+        this.innerHTML = document.querySelector('template').innerHTML
+      }
+>>>>>>> 0ba1e247077319884eeff7df915a942c4ab819a7:card-template.html
+
+  class Card extends HTMLElement{
+    constructor(){
+      super();
+      this.innerHTML =  document.querySelector('template').innerHTML
+    }
+  }
+  customElements.define('custom-card', Card);
+
+  </script>
+
+  </body>
+
+  <style>
+  *{
+    padding:0;
+    margin:0;
+  }
+  .card-title{
+    grid-area: title;
+    background-color: aliceblue;
+  }
+  .card-image{
+    grid-area: image;
+    background-color: blanchedalmond;
+  }
+  .up-one{
+    grid-area: upleft;
+    background-color: darksalmon;
+  }
+  .up-two{
+    grid-area: upright;
+    background-color: darkturquoise;
+  }
+  .down-one{
+    grid-area: downleft;
+    background-color: gainsboro;
+  }
+  .down-two{
+    grid-area: downmiddle;
+    background-color: khaki;
+  }
+  .down-three{
+    grid-area: downright;
+    background-color: lavender;
+  }
+  .down-four{
+    grid-area: downdown;
+    background-color: lightsalmon;
+  }
+  .card-up, .card-down{
+    display: inline-block;
+  }
+  card-template{
+    width: 50vw;
+    min-width: 600px;
+    height: 50vh;
+    min-height: 300px;
+    background: palevioletred;
+    margin: 25vh auto;
+
+    display: grid;
+    grid-template-columns: 5fr repeat(4, 1fr);
+    grid-template-rows: 1fr 2fr repeat(2, 1fr);
+    grid-template-areas:
+      "title title title title title "
+      "image upleft upleft upright upright"
+      "image downleft downmiddle downmiddle downright"
+      "image downleft downdown downdown downright";
+    /* grid-gap: 3px; */
+    place-items: stretch;
+    place-content: stretch;
+    gap: 3px;
+    padding: 3px;
+
+  }
+
+  @media only screen and (max-width: 600px){
+    card-template{
+      width: 100vw;
+      min-width: 300px;;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr 4fr 2fr repeat(2, 1fr);
+      grid-template-areas:
+        "title title title title"
+        "image image image image"
+        "upleft upleft upright upright"
+        "downleft downmiddle downmiddle downright"
+        "downleft downdown downdown downright";
+    }
+  }
+
+  </style>
+
+
+</html>
